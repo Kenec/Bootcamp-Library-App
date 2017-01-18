@@ -10,7 +10,7 @@ var register = require('./routes/register');
 var user_index = require('./routes/user/index');
 var admin_index = require('./routes/admin/index');
 var users = require('./routes/users');
-
+require('dotenv').config();
 var app = express();
 
 // view engine setup

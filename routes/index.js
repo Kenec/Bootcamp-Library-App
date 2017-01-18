@@ -3,11 +3,24 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  var cat = "Engineering";
+  res.render('user/index', { cat: cat });
 });
 
 router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  var cat = req.query;
+  if(cat == {} ){
+    cat = "Engineering";
+  } else {
+    cat = req.query.cat;
+  }
+  
+  res.render('user/index', { cat: cat });
 });
+
+
+
+
+
 
 module.exports = router;
