@@ -28,7 +28,7 @@ function setDataInTable(data){
           var qty = book_items["qty"];
           var imge = book_items["img"];
       }
-      var bk_name = book_name.toString();
+      //var bk_name = book_name.toString();
       var div1 = document.createElement('div');
       div1.setAttribute('class', 'row well');
       var div2 = document.createElement('div')
@@ -63,13 +63,14 @@ function borrow(){
     if(qty <= 0){
       alert("Sorry You cannot borrow this book because we are out of stock!");
     } else{
-      var username = "Obilolo"; // This is to be replaced with the name of the user
+      var username = "Okafor"; // This is to be replaced with the name of the user
       var d = new Date();
       d.setDate(d.getDate()+7)
       var dataa = {};
       dataa[username] = {
         "Due":d,
-        "surcharge": 0
+        "surcharge": 0,
+        "bookname":bookname,
       };
 
       var borrower = firebase.database().ref('Borrowers/')

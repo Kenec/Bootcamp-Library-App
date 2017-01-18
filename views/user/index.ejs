@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title>User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,36 +11,8 @@
       <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
       <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
-      <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyAWVwb4SespufERfwTxCi-g6CjS9H-ypIE",
-          authDomain: "library-188e9.firebaseapp.com",
-          databaseURL: "https://library-188e9.firebaseio.com",
-          storageBucket: "library-188e9.appspot.com",
-          messagingSenderId: "676372866910"
-        };
-        firebase.initializeApp(config);
-
-        // Get a reference to the database service
-        var database = firebase.database();
-
-          /*var playersRef = firebase.database().ref("Login/");
-
-          playersRef.set({
-             John: {
-                number: 1,
-                age: 30
-             },
-
-             Amanda: {
-                number: 2,
-                age: 20
-             }
-          });
-          */
-
-      </script>
+      <!-- Initialize Firebase-->
+      <script src="/javascripts/config.js"></script>
       <script src="/javascripts/getBooks.js"></script>
   </head>
   <body>
@@ -77,33 +49,11 @@
                     </span></b>
                     <script>
                         var books = getRequestedBooks("<%=cat%>");
-                        console.log(books);
-
+                        relod();
                     </script>
                     </div>
                       <div id="books" class="panel-body">
-                        <!-- static item 1
-                        <div class="row well">
-                            <div class="col-md-2"><img class="img-responsive"src="/images/intro_to_math.jpg" alt="Maths"></div>
-                            <div class="col-md-10">
-                                <p><b>Name:</b> Introduction to Mathematics</p>
-                                <p><b>Author:</b> Wole Soyinka</p>
-                                <p><b>Publisher:</b> Pacific publishing house</p>
-                                <p><span class="text-primary"><button class="btn btn-success">Borrow</button></span></p>
-                            </div>
-                        </div>
 
-                        static item 2
-                        <div class="row well">
-                            <div class="col-md-2"><img class="img-responsive"src="/images/intro_to_physics.jpg" alt="Physics"></div>
-                            <div class="col-md-10">
-                                <p><b>Name:</b> Introduction to Pysics</p>
-                                <p><b>Author:</b> Chinua Achebe</p>
-                                <p><b>Publisher:</b> Pacific publishing house</p>
-                                <p><span class="text-primary"><button class="btn btn-success">Borrow</button></span></p>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
               </div>
