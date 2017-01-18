@@ -5,7 +5,7 @@ starCountRef.on('value', function(snapshot) {
   //console.log(snapshot.val());
   data_returned = snapshot.val();
   data_returned.forEach(function(data){
-    $(".linkList").append( "<li id='" + data + "'>" +"<a href='/index?cat="+data+"'>"+ data +"</a>"+ "</li>" );
+    $(".linkList").append( "<li id='" + data + "'>" +"<a href='/user_dashboard/books?cat="+data+"'>"+ data +"</a>"+ "</li>" );
   });
 
 });
