@@ -1,5 +1,8 @@
 module.exports = {
-  addBook: function(){
-    console.log("You re seeing this function");
+  manageBook: function(){
+
   },
+  getCategories: function(){
+
+  }
 }

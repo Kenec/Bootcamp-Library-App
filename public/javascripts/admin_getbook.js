@@ -1,4 +1,5 @@
 function getRequestedBooks(name){
+  var category = name;
   var path = name.toString()+'/';
   var getBookJSON = firebase.database().ref(path);
   var data_returned = [];
@@ -8,16 +9,17 @@ function getRequestedBooks(name){
     //console.log(snapshot.val());
     data_returned = snapshot.val();
     if(!data_returned){
-        $("#books").append( "No Book was found under this categpry" );
+        $(".books").append( "No Book was found under this categpry" );
     } else{
-      setDataInTable(data_returned);
+      setDataInTable(category,data_returned);
     }
 
   });
   //console.log(arr);
 }
 
-function setDataInTable(data){
+function setDataInTable(cat,data){
+  var category = cat;
   for(var item in data){
       var book_name = item;
       var book_items = data[item];
@@ -44,47 +46,25 @@ function setDataInTable(data){
         div3.innerHTML = '<p><b>Name: </b>'+book_name+'</p>'+
                          '<p><b>Author: </b>'+author+'</p>'+
                          '<p><b>Publisher: </b>'+publisher+'</p>'+
-                         '<p><span ><button name="'+book_name+'" id="'+qty+'" onclick="borrow()" class="btn btn-success">Borrow</button></span></p>';
+                         '<p><span ><button name="'+book_name+'" id="'+category+'" onclick="remove()" class="btn btn-success">Remove</button></span></p>';
       //div2.innerHTML = '<img class="img-responsive"src="+imge+" alt="Maths">';
       div1.appendChild(div2);
       div1.appendChild(div3);
 
       document.getElementById('books').appendChild(div1);
-
-
-}
-
-  }
-function borrow(){
-  var cf = confirm("Do you want to borrow  "+event.srcElement.name+"?");
-  if(cf){
-    var bookname = event.srcElement.name;
-    var qty = event.srcElement.id;
-    if(qty <= 0){
-      alert("Sorry You cannot borrow this book because we are out of stock!");
-    } else{
-      var username = "Okafor"; // This is to be replaced with the name of the user
-      var d = new Date();
-      d.setDate(d.getDate()+7)
-      var dataa = {};
-      dataa[username] = {
-        "Due":d,
-        "surcharge": 0,
-        "bookname":bookname,
-      };
-
-      var borrower = firebase.database().ref('Borrowers/')
-      //.child('Borrowers/').push().key;
-      var updates = {};
-      updates['Borrowers/' + borrower] = dataa;
-      borrower.update(dataa);
-
-      //var updateBook = firebase.database().ref("Medicine/"+bookname);
-      //updateBook.update({
-      //  "qty": qty - 1
-      //});
-
-      alert("You have Borrowed "+bookname+"\nYou're to return the book in 7 days time");
     }
+
   }
+
+function remove(){
+    var cf = confirm("Do you want to delete  "+event.srcElement.name+"?");
+    if(cf){
+      var bookname = event.srcElement.name;
+      var category = event.srcElement.id;
+
+      var book = firebase.database().ref(category+'/'+bookname);
+      book.remove();
+      location.reload();
+
+    }
 }

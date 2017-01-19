@@ -1,4 +1,5 @@
   // Initialize Firebase
+  //require('../.env').config()
   var firebase = require("firebase");
   var config = {
     apiKey: "AIzaSyAWVwb4SespufERfwTxCi-g6CjS9H-ypIE",

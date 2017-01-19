@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var firebase = require('../config.js');
-var addBook = require('./addBook.js');
+var Book = require('./addBook.js');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 /* GET home page. */
@@ -45,7 +45,11 @@ router.post('/add_book', urlencodedParser, function(req, res, next) {
 });
 
 router.get('/manage_book', function(req, res, next) {
-  res.render('admin/manage_book');
+  var cat = req.query.cat;
+  if(!cat){
+    cat = "Engineering";
+  }
+  res.render('admin/manage_book',{cat:cat});
 });
 
 router.get('/borrowers', function(req, res, next) {
@@ -69,8 +73,8 @@ router.post('/borrowers', urlencodedParser, function(req, res, next) {
       "surcharge":charge
     });
 
-  console.log(charge);
-  console.log(name);
+  //console.log(charge);
+  //console.log(name);
   res.send('Surcharge Added successfully');
 
 });
