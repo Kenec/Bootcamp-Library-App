@@ -28,7 +28,7 @@ function updateSurcharge(name,charge){
     });
 
     //alert("You have added "+charge+" to "+ name);
-    location.reload();
+    //location.reload();
 }
 
 function markAsReturned(name){
@@ -37,7 +37,7 @@ function markAsReturned(name){
       console.log(name+" has returned his book");
       var borrower = firebase.database().ref('Borrowers/'+name);
       borrower.remove();
-      location.reload();
+      //location.reload();
   }
 }
 

@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
-var firebase = require('../config.js');
+var firebase = require('../config.js').database();
 var Book = require('./addBook.js');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })

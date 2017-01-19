@@ -63,7 +63,7 @@ function borrow(){
     if(qty <= 0){
       alert("Sorry You cannot borrow this book because we are out of stock!");
     } else{
-      var username = "Okafor"; // This is to be replaced with the name of the user
+      var username = generateRandonUser(); // This is to be replaced with the name of the user
       var d = new Date();
       d.setDate(d.getDate()+7)
       var dataa = {};
@@ -87,4 +87,15 @@ function borrow(){
       alert("You have Borrowed "+bookname+"\nYou're to return the book in 7 days time");
     }
   }
+}
+
+function generateRandonUser()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }

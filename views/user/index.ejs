@@ -14,6 +14,9 @@
       <!-- Initialize Firebase-->
       <script src="/javascripts/config.js"></script>
       <script src="/javascripts/getBooks.js"></script>
+      <script type="text/javascript">
+        sessionStorage.setItem('email', 'nnamani.kenechukwu@gmail.com');
+      </script>
   </head>
   <body>
       <div class="well container-fluid">
@@ -23,7 +26,7 @@
             </div>
             <div class="col-md-2 pull-right pulldown">
                 <div class="row">
-                  <span class="text-primary"><button class="btn btn-success">Welcome kene!</button></span>
+                  <span class="text-primary"><button class="btn btn-success">Welcome <script>sessionStorage.getItem('email');</script></button></span>
                   <span class="text-primary"><a href=""><button class="btn btn-default">Logout</button></a></span>
                 </div>
             </div>
@@ -49,7 +52,6 @@
                     </span></b>
                     <script>
                         var books = getRequestedBooks("<%=cat%>");
-                        relod();
                     </script>
                     </div>
                       <div id="books" class="panel-body">

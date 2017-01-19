@@ -1,13 +1,15 @@
   // Initialize Firebase
-  //require('../.env').config()
+  require('dotenv').config()
   var firebase = require("firebase");
   var config = {
-    apiKey: "AIzaSyAWVwb4SespufERfwTxCi-g6CjS9H-ypIE",
-    authDomain: "library-188e9.firebaseapp.com",
-    databaseURL: "https://library-188e9.firebaseio.com",
-    storageBucket: "library-188e9.appspot.com",
-    messagingSenderId: "676372866910"
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
   };
 
 var FbApp = firebase.initializeApp(config);
-module.exports = FbApp.database();
+
+module.exports = FbApp;
+//module.exports = FbApp.database();

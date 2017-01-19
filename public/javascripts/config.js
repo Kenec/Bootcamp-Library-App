@@ -1,4 +1,5 @@
   // Initialize Firebase
+  //require('dotenv').config();
   var config = {
     apiKey: "AIzaSyAWVwb4SespufERfwTxCi-g6CjS9H-ypIE",
     authDomain: "library-188e9.firebaseapp.com",
