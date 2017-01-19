@@ -11,9 +11,11 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Initialize Firebase-->
-    <script src="/javascripts/config.js"></script>
+<!--<script src="/javascripts/config.js"></script>-->
     <script src="/javascripts/admin_cat.js"></script>
+    <script src="/javascripts/process_borrowers.js"></script>
 
   </head>
   <body>
@@ -43,7 +45,7 @@
               </div>
               <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b><span class="text-primary">BOOKS In OUR STORE</span></b></div>
+                    <div class="panel-heading"><b><span class="text-primary">BORROWERS</span></b></div>
                     <div class="panel-body">
                         <table class="table table-striped">
                           <thead>
@@ -58,26 +60,37 @@
                           <tbody>
                             <% for (var p in borrowers){
                                 var borrower_name = p;
-                                var borrower_items = borrower_name[p];
+                                var borrower_items = borrowers[p];
 
-                                  for (var subitem in borrower_items){
-                                      var due_date = borrower_items["Due"];
-                                      var bookname = borrower_items["bookname"];
-                                      var surcharge = borrower_items["surcharge"]; %>
+                                for (var subitem in borrower_items){
+                                    var bookname = borrower_items["bookname"];
+                                    var duedate = borrower_items["Due"];
+                                    var surcharge = borrower_items["surcharge"];
+                                }
 
-                                      <tr>
-                                          <td><%=borrower_name%></td>
-                                          <td><%=bookname%></td>
-                                          <td><%=due_date%></td>
-                                          <td><%=surcharge%></td>
-                                          <td><button type="button" onclick= class="btn btn-danger" name="button">surcharge</button></td>
-                                      </tr>
-                            <%
-                                  }
-                              }
-                            }%>
-
+                            %>
+                            <tr>
+                                <td><%=borrower_name%></td>
+                                <td><%=bookname%></td>
+                                <td><%=duedate%></td>
+                                <td><%=surcharge%></td>
+                                <td><button type="button" class="btn_surcharge btn btn-danger" name="<%=borrower_name%>">Surcharge</button></td>
+                                <td><button type="button" class="btn btn-primary" name="button">Mark as Returned</button></td>
+                            </tr>
+                            <% } %>
                           </tbody>
+                        </table>
+                        <table  class="table table-striped">
+                            <tr>
+                              <form class="" action="" method="">
+                                    <div id="surcharge_form" class="form-group">
+                                        <label for="surcharge">Add Surcharge:</label>
+                                        <input type="number" id="surcharge_amt" name="surcharge" class="form-control" >
+
+                                        <button type="button" id="surcharge_btn" class="btn btn-primary">Add Surcharge Amount</button>
+                                    </div>
+                              </form>
+                            </tr>
                         </table>
                     </div>
                 </div>

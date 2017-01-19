@@ -53,10 +53,28 @@ router.get('/borrowers', function(req, res, next) {
   starCountRef.on('value', function(snapshot) {
     //console.log(snapshot.val());
     data_returned = snapshot.val();
-    console.log(data_returned);
+    //console.log(data_returned);
     res.render('admin/borrowers', { borrowers: data_returned });
   });
   //res.render('admin/borrowers');
 })
+
+router.post('/borrowers', urlencodedParser, function(req, res, next) {
+  //addBook.addBook();
+  var charge = req.body.surcharge;
+  var name = req.body.name;
+
+    var borrower = firebase.ref('Borrowers/'+name);
+    borrower.update({
+      "surcharge":charge
+    });
+
+  console.log(charge);
+  console.log(name);
+  res.send('Surcharge Added successfully');
+
+});
+
+
 
 module.exports = router;

@@ -10,5 +10,8 @@ body {
 }
 .img{
   float:left;
-  
+
+}
+.dont_display{
+  display:"none";
 }

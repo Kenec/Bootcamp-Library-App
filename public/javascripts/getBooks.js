@@ -63,7 +63,7 @@ function borrow(){
     if(qty <= 0){
       alert("Sorry You cannot borrow this book because we are out of stock!");
     } else{
-      var username = "Okafor"; // This is to be replaced with the name of the user
+      var username = "Eyo Eyo"; // This is to be replaced with the name of the user
       var d = new Date();
       d.setDate(d.getDate()+7)
       var dataa = {};
