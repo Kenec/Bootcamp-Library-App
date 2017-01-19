@@ -44,6 +44,19 @@ router.post('/add_book', urlencodedParser, function(req, res, next) {
 
 });
 
+router.get('/manage_book', function(req, res, next) {
+  res.render('admin/manage_book');
+});
 
+router.get('/borrowers', function(req, res, next) {
+  var starCountRef = firebase.ref('Borrowers/');
+  starCountRef.on('value', function(snapshot) {
+    //console.log(snapshot.val());
+    data_returned = snapshot.val();
+    console.log(data_returned);
+    res.render('admin/borrowers', { borrowers: data_returned });
+  });
+  //res.render('admin/borrowers');
+})
 
 module.exports = router;

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
+    <!-- Initialize Firebase-->
+    <script src="/javascripts/config.js"></script>
+    <script src="/javascripts/admin_cat.js"></script>
+
+  </head>
+  <body>
+      <div class="well container-fluid">
+          <div class="row">
+            <div class="col-md-10">
+                <div class="my_title"><h1><strong class="text-primary">L</strong>ibrary <strong class="text-primary">A</strong>pp</h1></div>
+            </div>
+            <div class="col-md-2 pull-right pulldown">
+                <div class="row">
+                  <span class="text-primary"><button class="btn btn-success">Welcome Admin!</button></span>
+                  <span class="text-primary"><a href=""><button class="btn btn-default">Logout</button></a></span>
+                </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><h3>MENU</h3></div>
+                      <div class="panel-body">
+                        <% include ./links/links.ejs %>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b><span class="text-primary">BOOKS In OUR STORE</span></b></div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                                <th>Book Name</th>
+                                <th>Book Author</th>
+                                <th>Quantity</th>
+                                <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td>Intro To Maths</td>
+                                <td>Dr. Exe Avenue</td>
+                                <td>12</td>
+                                <td><button type="button" class="btn btn-danger" name="button">Delete</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+
+          </div>
+      </div>
+  </body>
+</html>
