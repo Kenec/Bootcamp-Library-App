@@ -1,4 +1,4 @@
-function getRequestedBooks(name){
+function getRequestedBooks(name,email){
   var path = name.toString()+'/';
   var getBookJSON = firebase.database().ref(path);
   var data_returned = [];
@@ -10,14 +10,14 @@ function getRequestedBooks(name){
     if(!data_returned){
         $("#books").append( "No Book was found under this categpry" );
     } else{
-      setDataInTable(data_returned);
+      setDataInTable(data_returned,email);
     }
 
   });
   //console.log(arr);
 }
 
-function setDataInTable(data){
+function setDataInTable(data,email){
   for(var item in data){
       var book_name = item;
       var book_items = data[item];
@@ -44,7 +44,7 @@ function setDataInTable(data){
         div3.innerHTML = '<p><b>Name: </b>'+book_name+'</p>'+
                          '<p><b>Author: </b>'+author+'</p>'+
                          '<p><b>Publisher: </b>'+publisher+'</p>'+
-                         '<p><span ><button name="'+book_name+'" id="'+qty+'" onclick="borrow()" class="btn btn-success">Borrow</button></span></p>';
+                         '<p><span ><button value="'+email+'" name="'+book_name+'" id="'+qty+'" onclick="borrow()" class="btn btn-success">Borrow</button></span></p>';
       //div2.innerHTML = '<img class="img-responsive"src="+imge+" alt="Maths">';
       div1.appendChild(div2);
       div1.appendChild(div3);
@@ -60,10 +60,14 @@ function borrow(){
   if(cf){
     var bookname = event.srcElement.name;
     var qty = event.srcElement.id;
+    var email = event.srcElement.value;
+    email = email.replace(/[^a-zA-Z0-9]/g,'_');
+      console.log(email);
     if(qty <= 0){
       alert("Sorry You cannot borrow this book because we are out of stock!");
     } else{
-      var username = generateRandonUser(); // This is to be replaced with the name of the user
+      var username = email; // This is to be replaced with the name of the user
+
       var d = new Date();
       d.setDate(d.getDate()+7)
       var dataa = {};

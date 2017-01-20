@@ -12,6 +12,7 @@ var admin_index = require('./routes/admin/index');
 var users = require('./routes/users');
 require('dotenv').config();
 var app = express();
+app.use(cookieParser());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -23,6 +23,7 @@ router.post('/',urlencodedParser, function(req, res, next) {
     var cat = "Engineering";
     //cookie.setCookie("user",email,60);
     //sessionStorage.setItem('email', email);
+    res.cookie('email',email);
     res.render('user/index',{cat:cat});
     }
   });
